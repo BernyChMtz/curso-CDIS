@@ -1,0 +1,10 @@
+.aut li{
+    list-style: none;
+    background-color: gray;
+    margin: 8px;
+    padding: 10px;
+    border-radius: 2em;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px; 
+  }
