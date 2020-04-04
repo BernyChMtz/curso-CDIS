@@ -8,3 +8,11 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.active {
+    color: #204051;
+    border: 5px;
+    border-style: solid;
+    border-color: #204051;
+    background-color: #84a9ac;
+}
