@@ -9,25 +9,29 @@
             </div>
             <div class="modal-body">
                 <label>Marca: {{autoSeleccionado.marca}}</label>
-                <br/>
+                
                 <label>Submarca: {{autoSeleccionado.submarca}}</label>
-                <br/>
-                <label>Modelo: {{autoSeleccionado.modelo}}</label>
-                <br/>
+                
+                
+                
                 <label>Descripción: {{autoSeleccionado.descripcion}}</label>
-                <br/>
-                <label>Fecha de registro: {{autoSeleccionado.fecha_registro}}</label>
+                
+                
             </div> 
         </div>
     </div>
 </ng-template>
 
 <ul class="aut">
-    <li *ngFor='let auto of autos'>
+    <li *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
         <img src="/assets/images/eye.jpg" width="30" height="30" (click)="onSelect(auto, cont)">
         <span class="badge badge-secondary">{{auto.descripcion}}</span>
     </li>
 </ul>
+
+<div class="pagination"> 
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="autos.length" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+</div>
 
 
 

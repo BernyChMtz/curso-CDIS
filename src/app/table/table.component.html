@@ -4,19 +4,27 @@
       <th scope="col">#</th>
       <th scope="col">Marca</th>
       <th scope="col">Submarca</th>
-      <th scope="col">Modelo</th>
+      
       <th scope="col">Descripción</th>
-      <th scope="col">Fecha de registro</th>
+      <th scope="col">Eliminar</th>
+      <th scope="col">Actualizar</th>
+      
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let auto of autos; index as i">
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+      <td>{{ auto.id }}</td>
       <td>{{ auto.marca }}</td>
       <td>{{ auto.submarca }}</td>
-      <td>{{ auto.modelo }}</td>
+      
       <td>{{ auto.descripcion }}</td>
-      <td>{{ auto.fecha_registro }}</td>
+      <td><img src="/assets/images/borrar.png" width="30" height="30"></td>
+      <td><img src="/assets/images/editar.png" width="30" height="30"></td>
+      
     </tr>
     </tbody>
   </table>
+
+  <div class="pagination"> 
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="autos.length" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+  </div>
