@@ -7,7 +7,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './modal-add-update.component.html',
   styleUrls: ['./modal-add-update.component.css']
 })
-export class ModalAddUpdateComponent {
+export class ModalAddUpdateComponent implements OnInit {
 
   accion: string;
 
@@ -15,6 +15,8 @@ export class ModalAddUpdateComponent {
 
   constructor(public activeModal: NgbActiveModal) { }
 
-  
+  ngOnInit() {
+    
+  }
 
 }

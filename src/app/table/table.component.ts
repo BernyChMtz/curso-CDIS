@@ -13,17 +13,25 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TableComponent implements OnInit {
 
-  page = 1;
-  pageSize = 10;
+  page : number;
+  pageSize : number;
 
   autos: Automovil[];
   autoSeleccionado: Automovil;
 
+  displayProgressBar : boolean;
+
   constructor(private autoService: AutosService, private modalService: NgbModal) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.displayProgressBar = true;
+    this.pageSize = 10;
+    this.page = +sessionStorage.getItem('currentPage');
     this.autoService.getAutos().subscribe((response)=>{
-      this.autos = response.data;
+      setTimeout(() => {
+        this.displayProgressBar = false;
+        this.autos = response.data;
+      }, 1500);
     })
   }
 
@@ -34,7 +42,10 @@ export class TableComponent implements OnInit {
 
     modalRef.result.then(
       (auto) => {
-        this.autoService.updateAutos(auto).subscribe(response => console.log(response));
+        this.autoService.updateAutos(auto).subscribe(value => {
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
+        });
       },
       (reason) => {
         console.log(reason);
@@ -48,7 +59,10 @@ export class TableComponent implements OnInit {
 
     modalRef.result.then(
       (auto) => {
-        this.autoService.agregarAutos(auto).subscribe(response => console.log(response));
+        this.autoService.agregarAutos(auto).subscribe(response => {
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
+        });
       },
       (reason) => {
         console.log(reason);
@@ -63,8 +77,8 @@ export class TableComponent implements OnInit {
     modalRef.result.then(
       (autoTemp) => {
         this.autoService.deleteAuto(autoTemp).subscribe(response => {
-          console.log("Respuesta cuando se termina de eliminar un auto")
-          console.log(response)
+          sessionStorage.setItem('currentPage', this.page.toString());
+          this.ngOnInit();
         })
       },
       (reason) => {

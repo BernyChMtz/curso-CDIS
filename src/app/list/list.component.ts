@@ -18,11 +18,18 @@ export class ListComponent implements OnInit {
   autoSeleccionado: Automovil;
   closeResult = '';
 
+  displayProgressBar : boolean;
+
   constructor(private modalService: NgbModal, private autoService: AutosService) { }
 
   ngOnInit() {
+    this.displayProgressBar = true;
     this.autoService.getAutos().subscribe((response)=>{
-      this.autos = response.data;
+      setTimeout(() => {
+        this.displayProgressBar = false;
+        this.autos = response.data;
+      }, 1500);
+      
     })
   }
 
