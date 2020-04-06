@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +15,7 @@ import { ModalAddUpdateComponent } from './modal-add-update/modal-add-update.com
 import { FormsModule } from '@angular/forms';
 import { ModalConfirmActionComponent } from './modal-confirm-action/modal-confirm-action.component';
 import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
+import { LogComponent } from './log/log.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { FormatoModelosPipe } from './pipes/formato-modelos.pipe';
     PageNotFoundComponent,
     ModalAddUpdateComponent,
     ModalConfirmActionComponent,
-    FormatoModelosPipe
+    FormatoModelosPipe,
+    LogComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
