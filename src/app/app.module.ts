@@ -10,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { TableComponent } from './table/table.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalAddUpdateComponent } from './modal-add-update/modal-add-update.component';
+import { FormsModule } from '@angular/forms';
+import { ModalConfirmActionComponent } from './modal-confirm-action/modal-confirm-action.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +21,19 @@ import { HttpClientModule } from '@angular/common/http';
     VistasComponent,
     ListComponent,
     TableComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ModalAddUpdateComponent,
+    ModalConfirmActionComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalAddUpdateComponent]
 })
 export class AppModule { }

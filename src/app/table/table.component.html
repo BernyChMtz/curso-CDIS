@@ -1,3 +1,4 @@
+<button type="button" (click)=openModalAgregar() class="btn btn-dark">Agregar <i class="fa fa-plus"></i></button>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -13,13 +14,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-      <td>{{ auto.id }}</td>
+      <td>{{ auto._id }}</td>
       <td>{{ auto.marca }}</td>
       <td>{{ auto.submarca }}</td>
       
       <td>{{ auto.descripcion }}</td>
-      <td><img src="/assets/images/borrar.png" width="30" height="30"></td>
-      <td><img src="/assets/images/editar.png" width="30" height="30"></td>
+      <td (click)="openModalConfirmarEliminar(auto)"><img src="/assets/images/borrar.png" width="30" height="30"></td>
+      <td (click)="openModalEditar(auto)"><img src="/assets/images/editar.png" width="30" height="30"></td>
       
     </tr>
     </tbody>
