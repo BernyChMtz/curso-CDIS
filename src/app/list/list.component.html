@@ -27,7 +27,7 @@
         <ngb-progressbar type="dark" [value]="100" [striped]=true [animated]=true></ngb-progressbar>
     </p>
     <li *ngFor="let auto of autos | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-        <img src="/assets/images/eye.jpg" width="30" height="30" (click)="onSelect(auto, cont)">
+        <img src="assets/images/eye.jpg" width="30" height="30" (click)="onSelect(auto, cont)">
         <span class="badge badge-secondary">{{auto.descripcion}}</span>
     </li>
 </ul>
